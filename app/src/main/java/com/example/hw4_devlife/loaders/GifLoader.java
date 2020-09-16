@@ -40,6 +40,6 @@ public class GifLoader extends AsyncTask<String, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         PostActivity activity = activityRef.get();
         if (activity == null || activity.isFinishing()) return;
-        activity.showGifImage();
+        activity.postLoaded();
     }
 }

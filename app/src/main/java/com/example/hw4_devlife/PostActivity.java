@@ -46,6 +46,7 @@ public class PostActivity extends AppCompatActivity {
             viewModel.setDescription(myIntent.getStringExtra(POST_DESC_EXTRA_NAME));
             loadGif(viewModel.getGifUrl());
         } else {
+            setPost();
             showGifImage();
         }
 
@@ -60,12 +61,19 @@ public class PostActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void showGifImage() {
-        gifImageView.setImageDrawable(viewModel.getGif());
-        description.setText(viewModel.getDescription());
+    public void postLoaded() {
+        setPost();
+        showGifImage();
+    }
 
+    private void showGifImage() {
         progressBar.setVisibility(View.GONE);
         gifImageView.setVisibility(View.VISIBLE);
+    }
+
+    private void setPost() {
+        gifImageView.setImageDrawable(viewModel.getGif());
+        description.setText(viewModel.getDescription());
     }
 
 }

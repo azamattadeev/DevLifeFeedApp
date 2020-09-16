@@ -47,10 +47,7 @@ public class PreviewsActivity extends AppCompatActivity implements PreviewsAdapt
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (!previewsViewModel.isLoading()) {
-                    previewsViewModel.setLoading(true);
                     loadPostsNTimes(1);
-                }
             }
         });
     }

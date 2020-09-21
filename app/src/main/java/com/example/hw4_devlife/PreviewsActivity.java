@@ -42,6 +42,7 @@ public class PreviewsActivity extends AppCompatActivity implements PreviewsAdapt
             previewsViewModel.setLaunching(false);
             loadPostsNTimes(3);
         }
+        previewsViewModel.setLoading(false);
 
         previewRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -69,10 +70,14 @@ public class PreviewsActivity extends AppCompatActivity implements PreviewsAdapt
     }
 
     private void loadPosts() {
-        new PostsLoader(this, previewsViewModel).execute(previewsViewModel.getApiPageNumber().getAndIncrement());
+        if (!previewsViewModel.isLoading()) {
+            previewsViewModel.setLoading(true);
+            new PostsLoader(this, previewsViewModel).execute(previewsViewModel.getApiPageNumber().getAndIncrement());
+        }
     }
 
     public void notifyRecycler(){
+        previewsViewModel.setLoading(false);
         int postsCount = previewsViewModel.getPostList().size();
         adapter.notifyItemRangeInserted(postsCount - POSTS_NUMBER_AT_ONE_TIME, POSTS_NUMBER_AT_ONE_TIME);
     }

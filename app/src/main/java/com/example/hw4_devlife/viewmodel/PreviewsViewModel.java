@@ -18,6 +18,8 @@ public class PreviewsViewModel extends ViewModel implements OnLoadPostsListener 
     private boolean isLaunching = true;
     @Getter
     private AtomicInteger apiPageNumber = new AtomicInteger(0);
+    @Getter @Setter
+    private boolean isLoading;
 
     @Override
     public void onLoadPosts(List<Post> posts) {

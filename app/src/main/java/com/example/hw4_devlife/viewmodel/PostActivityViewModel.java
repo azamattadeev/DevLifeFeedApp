@@ -18,6 +18,8 @@ public class PostActivityViewModel extends ViewModel implements OnLoadDrawableLi
     private String gifUrl;
     @Getter @Setter
     private boolean isLaunching = true;
+    @Getter @Setter
+    private boolean isLoading = false;
 
     @Override
     public void onLoadDrawable(Drawable drawable) {

@@ -45,15 +45,18 @@ public class PostActivity extends AppCompatActivity {
             viewModel.setGifUrl(myIntent.getStringExtra(GIF_URL_EXTRA_NAME));
             viewModel.setDescription(myIntent.getStringExtra(POST_DESC_EXTRA_NAME));
             loadGif(viewModel.getGifUrl());
-        } else {
+        } else if (viewModel.getGif() != null) {
             setPost();
             showGifImage();
+        } else if (viewModel.isLoading()) {
+            loadGif(viewModel.getGifUrl());
         }
 
     }
 
     private void loadGif(String url) {
         new GifLoader(this, viewModel).execute(url);
+        viewModel.setLoading(true);
     }
 
     private void showProgressBar() {

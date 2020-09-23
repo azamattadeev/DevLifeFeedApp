@@ -48,7 +48,7 @@ public class PostActivity extends AppCompatActivity {
         } else if (viewModel.getGif() != null) {
             setPost();
             showGifImage();
-        } else if (viewModel.isLoading()) {
+        } else {
             loadGif(viewModel.getGifUrl());
         }
 

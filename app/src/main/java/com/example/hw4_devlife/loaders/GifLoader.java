@@ -11,13 +11,11 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.URL;
 
-import okhttp3.OkHttpClient;
 import pl.droidsonroids.gif.GifDrawable;
 
 public class GifLoader extends AsyncTask<String, Void, Void> {
     private OnLoadDrawableListener listener;
     private WeakReference<PostActivity> activityRef;
-    private static final OkHttpClient client = new OkHttpClient();
 
     public GifLoader(PostActivity postActivity, OnLoadDrawableListener listener) {
         this.activityRef = new WeakReference<>(postActivity);
